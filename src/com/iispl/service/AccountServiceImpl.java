@@ -17,31 +17,30 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void addAccount(Account account) {
-		// TODO Auto-generated method stub
+		repository.addAccount(account);
 		
 	}
 
 	@Override
 	public Account searchAccount(String accountNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return repository.searchAccount(accountNumber);
 	}
 
 	@Override
 	public void updateBalance(String accountNumber, BigDecimal balance) {
-		// TODO Auto-generated method stub
+		repository.updateBalance(accountNumber, balance);
 		
 	}
 
 	@Override
 	public void deleteAccount(String accountNumber) {
-		// TODO Auto-generated method stub
-		
+		repository.deleteAccount(accountNumber);
 	}
 
 	@Override
 	public void displayAllAccounts() {
-		// TODO Auto-generated method stub
+		repository.displayAllAccounts();
 		
 	}
 

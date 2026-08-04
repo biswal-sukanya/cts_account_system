@@ -46,37 +46,35 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 		@Override
 		public void addAccount(Account account) {
-			// TODO Auto-generated method stub
+			accountMap.put(account.getAccountNumber(), account);
 			
 		}
 
 		@Override
 		public Account searchAccount(String accountNumber) {
-			// TODO Auto-generated method stub
-			return null;
+			return accountMap.get(accountNumber);
 		}
 
 		@Override
 		public void updateBalance(String accountNumber, BigDecimal newBalance) {
-			// TODO Auto-generated method stub
+			accountMap.get(accountNumber).setAccountBalance(newBalance);
 			
 		}
 
 		@Override
 		public void deleteAccount(String accountNumber) {
-			// TODO Auto-generated method stub
+			accountMap.remove(accountNumber);
 			
 		}
 
 		@Override
 		public void displayAllAccounts() {
-			// TODO Auto-generated method stub
+			System.out.println(accountMap);
 			
 		}
 
 		@Override
 		public HashMap<String, Account> getAllAccounts() {
-			// TODO Auto-generated method stub
-			return null;
+			return accountMap;
 		}
 }

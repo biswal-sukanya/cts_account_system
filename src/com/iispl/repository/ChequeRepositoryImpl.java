@@ -21,16 +21,19 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 
 		@Override
 		public boolean isDuplicateCheque(String chequeNumber) {
-			// TODO Auto-generated method stub
-			return false;
+			
+			return processedChequeNumbers.contains(chequeNumber);
 		}
 
 		@Override
 		public void addProcessedCheque(Cheque cheque) {
-			// TODO Auto-generated method stub
-			
-		}
 
+		    processedChequeNumbers.add(cheque.getChequeNumber());
+
+		    processedCheques.add(cheque);
+		    
+		    updateBranchReport(cheque.getBranchName());
+		}
 		@Override
 		public void removeProcessedCheque(String chequeNumber) {
 			
@@ -51,10 +54,23 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 		}
 
 		@Override
-		public void displayProcessedCheques() {
-			// TODO Auto-generated method stub
-			
-		}
+	    public void displayProcessedCheques() {
+
+	        System.out.printf("%-10s %-12s %-15s %-12s%n",
+	                "Cheque No",
+	                "Account No",
+	                "Branch",
+	                "Amount");
+
+	        System.out.println("---------------------------------------------------------");
+
+	        for (Cheque cheque : processedCheques) {
+
+	            System.out.println(cheque);
+
+	        }
+
+	    }
 
 		@Override
 		public void updateBranchReport(String branchName) {
@@ -86,18 +102,22 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 		@Override
 		public HashSet<String> getProcessedChequeNumbers() {
 		
+ //feature/remove_processed_cheques
 			return null;
+
+			return processedChequeNumbers;
+
 		}
 
 		@Override
 		public TreeSet<Cheque> getProcessedCheques() {
-			// TODO Auto-generated method stub
-			return null;
+			
+			return processedCheques;
 		}
 
 		@Override
 		public HashMap<String, Integer> getBranchReport() {
 			// TODO Auto-generated method stub
-			return null;
+			return branchReport;
 		}
 }

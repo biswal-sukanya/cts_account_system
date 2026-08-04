@@ -7,7 +7,7 @@ import com.iispl.model.Account;
 
 public interface AccountRepository {
 
-	 void addAccount(Account account);
+	 	void addAccount(Account account);
 
 	    Account searchAccount(String accountNumber);
 
