@@ -101,9 +101,6 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 
 		@Override
 		public HashSet<String> getProcessedChequeNumbers() {
-		
- //feature/remove_processed_cheques
-			return null;
 
 			return processedChequeNumbers;
 
