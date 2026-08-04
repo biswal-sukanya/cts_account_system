@@ -1,30 +1,67 @@
 package com.iispl.service;
 
-// feature/remove_processed_cheques
-import java.math.BigDecimal;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.TreeSet;
-
 
 import com.iispl.model.Cheque;
 import com.iispl.repository.AccountRepository;
 import com.iispl.repository.AccountRepositoryImpl;
 import com.iispl.repository.ChequeRepository;
 import com.iispl.repository.ChequeRepositoryImpl;
+import com.iispl.validator.BranchValidator;
+import com.iispl.validator.ChequeAmountValidator;
+import com.iispl.validator.ChequeNumberValidator;
+import com.iispl.validator.ChequeValidator;
+import com.iispl.validator.DuplicateChequeValidator;
 
 
 public class ChequeServiceImpl implements ChequeService {
 
 	 private AccountRepository accountRepository = new AccountRepositoryImpl();
 
-	    private ChequeRepository chequeRepository = new ChequeRepositoryImpl();
+	    private static ChequeRepository chequeRepository = new ChequeRepositoryImpl();
+	    
+	    private List<ChequeValidator> chequeValidators = new ArrayList<>();
+	    
+	    public ChequeServiceImpl() {
+
+	        chequeValidators.add(new ChequeNumberValidator());
+	        chequeValidators.add(new ChequeAmountValidator());
+	        chequeValidators.add(new BranchValidator());
+	        chequeValidators.add(new DuplicateChequeValidator(chequeRepository));
+
+	    }
+	    
+	    private void validateCheque(Cheque cheque) throws Exception {
+
+	        for(ChequeValidator validator : chequeValidators) {
+
+	            validator.validate(cheque);
+
+	        }
+
+	    }
 	    
 	    @Override
 	    public void processCheque(Cheque cheque) {
+	        
+	        try {
 
-	        chequeRepository.addProcessedCheque(cheque);
+	            validateCheque(cheque);
+
+	            chequeRepository.addProcessedCheque(cheque);
+
+	            System.out.println("Cheque Processed Successfully.");
+
+	        }
+	        catch(Exception e) {
+
+	            System.out.println(e.getMessage());
+
+	        }
 
 	    }
 	    @Override
