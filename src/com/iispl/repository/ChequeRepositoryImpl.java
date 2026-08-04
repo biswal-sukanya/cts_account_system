@@ -26,10 +26,13 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 
 		@Override
 		public void addProcessedCheque(Cheque cheque) {
-			// TODO Auto-generated method stub
-			
-		}
 
+		    processedChequeNumbers.add(cheque.getChequeNumber());
+
+		    processedCheques.add(cheque);
+		    
+		    updateBranchReport(cheque.getBranchName());
+		}
 		@Override
 		public void removeProcessedCheque(String chequeNumber) {
 			// TODO Auto-generated method stub
@@ -37,10 +40,23 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 		}
 
 		@Override
-		public void displayProcessedCheques() {
-			// TODO Auto-generated method stub
-			
-		}
+	    public void displayProcessedCheques() {
+
+	        System.out.printf("%-10s %-12s %-15s %-12s%n",
+	                "Cheque No",
+	                "Account No",
+	                "Branch",
+	                "Amount");
+
+	        System.out.println("---------------------------------------------------------");
+
+	        for (Cheque cheque : processedCheques) {
+
+	            System.out.println(cheque);
+
+	        }
+
+	    }
 
 		@Override
 		public void updateBranchReport(String branchName) {
