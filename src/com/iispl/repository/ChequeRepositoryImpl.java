@@ -20,8 +20,8 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 
 		@Override
 		public boolean isDuplicateCheque(String chequeNumber) {
-			// TODO Auto-generated method stub
-			return false;
+			
+			return processedChequeNumbers.contains(chequeNumber);
 		}
 
 		@Override
@@ -56,19 +56,19 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 
 		@Override
 		public HashSet<String> getProcessedChequeNumbers() {
-			// TODO Auto-generated method stub
-			return null;
+		
+			return processedChequeNumbers;
 		}
 
 		@Override
 		public TreeSet<Cheque> getProcessedCheques() {
-			// TODO Auto-generated method stub
-			return null;
+			
+			return processedCheques;
 		}
 
 		@Override
 		public HashMap<String, Integer> getBranchReport() {
 			// TODO Auto-generated method stub
-			return null;
+			return branchReport;
 		}
 }

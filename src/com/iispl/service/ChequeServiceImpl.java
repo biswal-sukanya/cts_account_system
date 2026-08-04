@@ -1,5 +1,9 @@
 package com.iispl.service;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.TreeSet;
+
 import com.iispl.model.Cheque;
 import com.iispl.repository.AccountRepository;
 import com.iispl.repository.AccountRepositoryImpl;
@@ -37,5 +41,29 @@ public class ChequeServiceImpl implements ChequeService {
 		public void displayBranchReport() {
 			// TODO Auto-generated method stub
 			
+		}
+
+		@Override
+		public HashSet<String> getProcessedChequeNumbers() {
+			// TODO Auto-generated method stub
+			return chequeRepository.getProcessedChequeNumbers();
+		}
+
+		@Override
+		public TreeSet<Cheque> getProcessedCheques() {
+			// TODO Auto-generated method stub
+			return chequeRepository.getProcessedCheques();
+		}
+
+		@Override
+		public HashMap<String, Integer> getBranchReport() {
+			// TODO Auto-generated method stub
+			return chequeRepository.getBranchReport();
+		}
+
+		@Override
+		public boolean isDuplicateCheque(String chequeNumber) {
+			// TODO Auto-generated method stub
+			return chequeRepository.isDuplicateCheque(chequeNumber);
 		}
 }
