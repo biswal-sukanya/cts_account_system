@@ -3,6 +3,7 @@ package com.iispl.repository;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 import com.iispl.model.Cheque;
@@ -35,8 +36,21 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 		}
 		@Override
 		public void removeProcessedCheque(String chequeNumber) {
-			// TODO Auto-generated method stub
 			
+			processedChequeNumbers.remove(chequeNumber);
+			
+			Iterator<Cheque> itr = processedCheques.iterator();
+			
+			while(itr.hasNext()) {
+				
+				Cheque cheque = itr.next();
+				
+				if(cheque.getChequeNumber().equals(chequeNumber)){
+					
+					itr.remove();
+					break;
+				}
+			}
 		}
 
 		@Override
@@ -60,20 +74,39 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 
 		@Override
 		public void updateBranchReport(String branchName) {
-			// TODO Auto-generated method stub
+			
+			if(branchReport.containsKey(branchName)) {
+				int count = branchReport.get(branchName);
+				
+				branchReport.put(branchName, count+1);
+			}else {
+				branchReport.put(branchName, 1);
+			}
 			
 		}
 
 		@Override
 		public void displayBranchReport() {
-			// TODO Auto-generated method stub
 			
+			 System.out.printf("%-15s %-10s%n","Branch","Count");
+		        System.out.println("---------------------------");
+
+		        for (String branch : branchReport.keySet()) {
+
+		            System.out.printf("%-15s %-10d%n",branch,branchReport.get(branch));
+
+		        }
+
 		}
 
 		@Override
 		public HashSet<String> getProcessedChequeNumbers() {
 		
+ //feature/remove_processed_cheques
+			return null;
+
 			return processedChequeNumbers;
+
 		}
 
 		@Override
