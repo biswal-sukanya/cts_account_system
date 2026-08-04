@@ -1,5 +1,5 @@
 package com.iispl.validator;
 
-public interface ChequeValidator {
+public class ChequeValidator {
 
 }

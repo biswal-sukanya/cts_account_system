@@ -1,5 +1,5 @@
 package com.iispl.validator;
 
-public interface AccountValidator {
+public class AccountValidator {
 
 }
