@@ -6,14 +6,10 @@ import com.iispl.enums.AccountStatus;
 import com.iispl.model.Account;
 import com.iispl.repository.AccountRepository;
 import com.iispl.repository.AccountRepositoryImpl;
-import com.iispl.validator.AccountValidator;
 
 public class AccountServiceImpl implements AccountService {
 	
-	  private AccountRepository repository = new AccountRepositoryImpl();
-
-	    private AccountValidator validator = new AccountValidator();
-	   
+	  private AccountRepository repository = new AccountRepositoryImpl();   
 
 	@Override
 	public void addAccount(Account account) {

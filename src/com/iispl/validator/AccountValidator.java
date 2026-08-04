@@ -1,6 +1,8 @@
 package com.iispl.validator;
 
-public class AccountValidator {
+import com.iispl.model.Account;
 
-	
+public interface AccountValidator {
+
+	 void validate(Account account);
 }

@@ -43,6 +43,6 @@ public class Account {
 	
 	@Override
 	public String toString() {
-		return String.format("%-10s %-12s %-10s",accountNumber,accountBalance,accountStatus);
+		return String.format("%-15s %-12s %-10s",accountNumber,accountBalance,accountStatus);
 	}
 }
