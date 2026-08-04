@@ -35,16 +35,10 @@ public class CTSApplication {
 				System.out.println("2. Search Account");
 				System.out.println("3. Update Balance");
 				System.out.println("4. Delete Account");
-
-				System.out.println("------------------------------------------");
-
 				System.out.println("5. Process Sample Cheques");
 				System.out.println("6. Display Processed Cheques");
 				System.out.println("7. Remove Processed Cheque");
 				System.out.println("8. Display Branch Report");
-
-				System.out.println();
-
 				System.out.println("9. Exit");
 
 				System.out.print("\nEnter Choice : ");
@@ -167,7 +161,7 @@ public class CTSApplication {
 				return;
 			}
 			
-			System.out.println("\nProcessing Sample Cheques...\n");
+			System.out.println("\n...");
 
 			Cheque cheque1 = new Cheque("CHQ001", "ACC101", "Bangalore",new BigDecimal("25000"));
 			Cheque cheque2 = new Cheque("CHQ002", "ACC102", "Mysore",new BigDecimal("85000"));
@@ -191,7 +185,7 @@ public class CTSApplication {
 			chequeService.processCheque(cheque9);
 			chequeService.processCheque(cheque10);
 
-			System.out.println("\nAll Sample Cheques Processed Successfully.");
+			System.out.println("\nAll Cheques Processed Successfully.");
 
 		}
 	
@@ -199,7 +193,7 @@ public class CTSApplication {
 
 			System.out.println("\nRemove...\n");
 			
-			System.out.println("Enter Account Number ");
+			System.out.println("Enter Cheque Number ");
 			String accountNumber = sc.next();
 
 			chequeService.removeProcessedCheque(accountNumber);
