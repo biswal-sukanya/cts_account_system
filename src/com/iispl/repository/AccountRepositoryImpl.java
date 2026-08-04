@@ -72,7 +72,7 @@ public class AccountRepositoryImpl implements AccountRepository {
 		@Override
 		public void displayAllAccounts() {
 		//	System.out.println(accountMap);
-			System.out.printf("%-10s %-12s %-10s%n%n","Account Number","Account Balance","Account Status");
+			System.out.printf("%-18s %-18s %-10s%n%n","Account Number","Account Balance","Account Status");
 			for(Account account : accountMap.values()) {
 				System.out.println(account);
 			}
