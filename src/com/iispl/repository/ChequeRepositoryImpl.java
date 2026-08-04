@@ -12,9 +12,8 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 
 	 private HashSet<String> processedChequeNumbers = new HashSet<>();
 
-	    private TreeSet<Cheque> processedCheques =
-	            new TreeSet<>(Comparator.comparing(Cheque::getChequeAmount).reversed()
-	            		       .thenComparing(Cheque::getChequeNumber));
+	 private TreeSet<Cheque> processedCheques = new TreeSet<>(Comparator.comparing(Cheque::getChequeAmount).reversed()
+	            		                                                .thenComparing(Cheque::getChequeNumber));
 
 	    private HashMap<String, Integer> branchReport =
 	            new HashMap<>();
