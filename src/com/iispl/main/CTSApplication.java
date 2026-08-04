@@ -111,7 +111,7 @@ public class CTSApplication {
 			Account account = accountService.searchAccount(accountNumber);
 
 			if (account != null) {
-				System.out.printf("\n%-10s %-12s %-10s%n%n","Account Number","Account Balance","Account Status");
+				System.out.printf("\n%-18s %-18s %-10s%n%n","Account Number","Account Balance","Account Status");
 				System.out.println(account);
 
 			} else {
