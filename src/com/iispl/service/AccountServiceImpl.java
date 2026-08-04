@@ -2,6 +2,7 @@ package com.iispl.service;
 
 import java.math.BigDecimal;
 
+import com.iispl.enums.AccountStatus;
 import com.iispl.model.Account;
 import com.iispl.repository.AccountRepository;
 import com.iispl.repository.AccountRepositoryImpl;
@@ -12,6 +13,7 @@ public class AccountServiceImpl implements AccountService {
 	  private AccountRepository repository = new AccountRepositoryImpl();
 
 	    private AccountValidator validator = new AccountValidator();
+	   
 
 	@Override
 	public void addAccount(Account account) {
