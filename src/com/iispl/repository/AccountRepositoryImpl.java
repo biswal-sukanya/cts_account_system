@@ -59,7 +59,7 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 		@Override
 		public void updateBalance(String accountNumber, BigDecimal newBalance) {
-			accountMap.get(accountNumber).setAccountBalance(newBalance);
+			accountMap.get(accountNumber).setAccountBalance(accountMap.get(accountNumber).getAccountBalance().add(newBalance));
 			
 		}
 
