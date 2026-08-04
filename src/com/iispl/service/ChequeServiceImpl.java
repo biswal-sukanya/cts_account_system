@@ -21,30 +21,28 @@ public class ChequeServiceImpl implements ChequeService {
 
 	    private ChequeRepository chequeRepository = new ChequeRepositoryImpl();
 	    
-		@Override
-		public void processCheque(Cheque cheque) {
-			
-			
-		}
+	    @Override
+	    public void processCheque(Cheque cheque) {
 
-		@Override
-		public void displayProcessedCheques() {
-			
-			
-		}
+	        chequeRepository.addProcessedCheque(cheque);
 
-		@Override
-		public void removeProcessedCheque(String chequeNumber) {
-			
-			
-		}
+	    }
+	    @Override
+	    public void displayProcessedCheques() {
 
-		@Override
-		public void displayBranchReport() {
-			
-			
-		}
+	        chequeRepository.displayProcessedCheques();
+	    }
+	    @Override
+	    public void removeProcessedCheque(String chequeNumber) {
 
+	        chequeRepository.removeProcessedCheque(chequeNumber);
+	    }
+
+	    @Override
+	    public void displayBranchReport() {
+
+	        chequeRepository.displayBranchReport();
+	    }
 		@Override
 		public HashSet<String> getProcessedChequeNumbers() {
 			// TODO Auto-generated method stub
