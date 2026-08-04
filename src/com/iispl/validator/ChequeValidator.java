@@ -4,5 +4,5 @@ import com.iispl.model.Cheque;
 
 public interface ChequeValidator {
 
-	 void validate(Cheque cheque);
+	 void validate(Cheque cheque)throws Exception;
 }

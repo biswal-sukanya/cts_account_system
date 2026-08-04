@@ -4,5 +4,5 @@ import com.iispl.model.Account;
 
 public interface AccountValidator {
 
-	 void validate(Account account);
+	 void validate(Account account) throws Exception;
 }
