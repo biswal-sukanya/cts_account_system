@@ -124,8 +124,6 @@ public class CTSApplication {
 		
 		private static void updateBalance() {
 
-			System.out.println("\nUpdating Balance of ACC103...\n");
-
 			System.out.println("Enter Account Number ");
 			String accountNumber = sc.next();
 			
