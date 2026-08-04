@@ -25,9 +25,9 @@ public class CTSApplication {
 
 			do {
 
-				System.out.println("\n==========================================");
-				System.out.println("        CTS BANKING SYSTEM");
-				
+				System.out.println();
+				System.out.println("  CTS BANKING SYSTEM");
+				System.out.println();
 
 				
 				System.out.println("1. Display All Accounts");
