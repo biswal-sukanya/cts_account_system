@@ -28,6 +28,7 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 		@Override
 		public void addProcessedCheque(Cheque cheque) {
 
+
 		    processedChequeNumbers.add(cheque.getChequeNumber());
 
 		    processedCheques.add(cheque);

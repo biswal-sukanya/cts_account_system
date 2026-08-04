@@ -1,8 +1,8 @@
 package com.iispl.main;
 
 import java.math.BigDecimal;
+import java.util.Scanner;
 
-import com.iispl.enums.AccountStatus;
 import com.iispl.model.Account;
 import com.iispl.model.Cheque;
 import com.iispl.service.AccountService;
@@ -13,73 +13,187 @@ import com.iispl.service.ChequeServiceImpl;
 public class CTSApplication {
 
 	static ChequeService chequeService = new ChequeServiceImpl();
-	static AccountService accountService = new AccountServiceImpl();
+	static AccountService accountService = new AccountServiceImpl();		
+
+	private static boolean chequeLoaded = false;
 	
-	public static void main(String[] args) {
+		public static void main(String[] args) {
 
-	    int choice = 1; // Change this value to test different cases
+			Scanner scanner = new Scanner(System.in);
 
-	    do {
+			int choice = 0;
 
-	        System.out.println("1. Display Accounts");
-	        System.out.println("2. Search Account");
-	        System.out.println("3. Update Balance");
-	        System.out.println("4. Delete Account");
-	        System.out.println("5. Process Cheques");
-	        System.out.println("6. Display Processed Cheques");
-	        System.out.println("7. Display Branch Report");
-	        System.out.println("8. Exit");
+			do {
 
-	        switch(choice) {
+				System.out.println("\n==========================================");
+				System.out.println("        CTS BANKING SYSTEM");
+				
 
-	        case 1:
-	        	accountService.displayAllAccounts();
-	            break;
+				
+				System.out.println("1. Display All Accounts");
+				System.out.println("2. Search Account");
+				System.out.println("3. Update Balance");
+				System.out.println("4. Delete Account");
 
-	        case 2:
-	        	System.out.println("Enter ");
-	        	accountService.searchAccount(null);
-	            break;
+				System.out.println("------------------------------------------");
 
-	        case 3:
-	        	accountService.updateBalance(null,null);
-	            break;
+				System.out.println("5. Process Sample Cheques");
+				System.out.println("6. Display Processed Cheques");
+				System.out.println("7. Remove Processed Cheque");
+				System.out.println("8. Display Branch Report");
 
-	        case 4:
-	        	accountService.deleteAccount(null);
-	            break;
+				System.out.println();
 
-	        case 5:
-	            processCheques();
-	            break;
+				System.out.println("9. Exit");
 
-	        case 6:
-	        	chequeService.displayProcessedCheques();
-	            break;
+				System.out.print("\nEnter Choice : ");
 
-	        case 7:
-	        	chequeService.displayBranchReport();
-	            break;
+				choice = scanner.nextInt();
 
-	        case 8:
-	            return;
-	        }
+				switch (choice) {
 
-	        break;
+				case 1:
 
-	    } while(true);
+					accountService.displayAllAccounts();
+					break;
+
+				case 2:
+					searchAccount();
+					
+					break;
+
+				case 3:
+
+					updateBalance();
+					break;
+
+				case 4:
+
+					deleteAccount();
+					break;
+
+				case 5:
+
+					processSampleCheques();
+					break;
+
+				case 6:
+
+					chequeService.displayProcessedCheques();
+					break;
+
+				case 7:
+
+					removeProcessedCheque();
+					break;
+
+				case 8:
+
+					chequeService.displayBranchReport();
+					break;
+
+				case 9:
+
+					System.out.println("Thank You...");
+					break;
+
+				default:
+
+					System.out.println("Invalid Choice.");
+
+				}
+
+			} while (choice != 10);
+
+			scanner.close();
 	}
-	private static void processCheques() {
+		
+		private static void searchAccount() {
 
-	    
+			System.out.println("\nSearching Account ACC103...\n");
 
-	    chequeService.processCheque(
-	            new Cheque("CHQ001","ACC101","Bangalore",new BigDecimal("25000")));
+			Account account = accountService.searchAccount("ACC103");
 
-	    chequeService.processCheque(
-	            new Cheque("CHQ002","ACC102","Mysore",new BigDecimal("80000")));
+			if (account != null) {
+				System.out.printf("\n%-10s %-12s %-10s%n%n","Account Number","Account Balance","Account Status");
+				System.out.println(account);
 
-	    chequeService.processCheque(
-	            new Cheque("CHQ003","ACC103","Hubli",new BigDecimal("15000")));
-	}
+			} else {
+
+				System.out.println("Account Not Found.");
+
+			}
+
+		}
+		
+		private static void updateBalance() {
+
+			System.out.println("\nUpdating Balance of ACC103...\n");
+
+			accountService.updateBalance(
+					"ACC107",
+					new BigDecimal("18000"));
+
+			System.out.println("Updated Successfully.\n");
+
+			accountService.displayAllAccounts();
+
+		}
+		
+		private static void deleteAccount() {
+
+			System.out.println("\nDeleting Account ACC110...\n");
+
+			accountService.deleteAccount("ACC110");
+
+			System.out.println("Deleted Successfully.\n");
+
+			accountService.displayAllAccounts();
+
+		}
+		
+		private static void processSampleCheques() {
+
+			if (chequeLoaded) {
+				System.out.println("Sample cheques are already processed.");
+				return;
+			}
+			
+			System.out.println("\nProcessing Sample Cheques...\n");
+
+			Cheque cheque1 = new Cheque("CHQ001", "ACC101", "Bangalore",new BigDecimal("25000"));
+			Cheque cheque2 = new Cheque("CHQ002", "ACC102", "Mysore",new BigDecimal("85000"));
+			Cheque cheque3 = new Cheque("CHQ003", "ACC103", "Hubli",new BigDecimal("15000"));
+			Cheque cheque4 = new Cheque("CHQ004", "ACC104", "Bangalore",new BigDecimal("60000"));
+			Cheque cheque5 = new Cheque("CHQ005", "ACC105", "Mangalore",new BigDecimal("18000"));
+			Cheque cheque6 = new Cheque("CHQ006", "ACC106", "Hubli",new BigDecimal("95000"));
+			Cheque cheque7 = new Cheque("CHQ007", "ACC107", "Mysore",new BigDecimal("12000"));
+			Cheque cheque8 = new Cheque("CHQ008", "ACC108", "Bangalore",new BigDecimal("50000"));
+			Cheque cheque9 = new Cheque("CHQ009", "ACC109", "Belgaum",new BigDecimal("70000"));
+			Cheque cheque10 = new Cheque("CHQ010", "ACC110", "Mangalore",new BigDecimal("30000"));
+
+			chequeService.processCheque(cheque1);
+			chequeService.processCheque(cheque2);
+			chequeService.processCheque(cheque3);
+			chequeService.processCheque(cheque4);
+			chequeService.processCheque(cheque5);
+			chequeService.processCheque(cheque6);
+			chequeService.processCheque(cheque7);
+			chequeService.processCheque(cheque8);
+			chequeService.processCheque(cheque9);
+			chequeService.processCheque(cheque10);
+
+			System.out.println("\nAll Sample Cheques Processed Successfully.");
+
+		}
+	
+		private static void removeProcessedCheque() {
+
+			System.out.println("\nRemoving CHQ005...\n");
+
+			chequeService.removeProcessedCheque("CHQ005");
+
+			System.out.println("Cheque Removed Successfully.");
+
+		}
 }

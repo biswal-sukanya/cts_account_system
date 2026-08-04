@@ -12,6 +12,7 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 	    public AccountRepositoryImpl() {
 
+	    	if(accountMap.isEmpty()) {
 	        accountMap.put("ACC101",
 	                new Account("ACC101", new BigDecimal("25000"), AccountStatus.ACTIVE));
 
@@ -41,6 +42,7 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 	        accountMap.put("ACC110",
 	                new Account("ACC110", new BigDecimal("18000"), AccountStatus.ACTIVE));
+	    	}
 
 	    }
 
@@ -69,7 +71,12 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 		@Override
 		public void displayAllAccounts() {
-			System.out.println(accountMap);
+		//	System.out.println(accountMap);
+			System.out.printf("%-10s %-12s %-10s%n%n","Account Number","Account Balance","Account Status");
+			for(Account account : accountMap.values()) {
+				System.out.println(account);
+			}
+			
 			
 		}
 

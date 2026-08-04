@@ -8,7 +8,7 @@ import com.iispl.model.Cheque;
 
 public interface ChequeService {
 
-	 void processCheque(Cheque cheque);
+	    void processCheque(Cheque cheque);
 
 	    void displayProcessedCheques();
 

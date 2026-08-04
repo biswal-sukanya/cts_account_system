@@ -1,5 +1,8 @@
 package com.iispl.validator;
 
-public class ChequeValidator {
+import com.iispl.model.Cheque;
 
+public interface ChequeValidator {
+
+	 void validate(Cheque cheque);
 }
