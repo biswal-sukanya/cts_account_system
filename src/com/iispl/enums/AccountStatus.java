@@ -1,5 +1,7 @@
 package com.iispl.enums;
 
 public enum AccountStatus {
-    ACTIVE,BLOCKED,CLOSED;
+    ACTIVE,
+    BLOCKED,
+    CLOSED;
 }
