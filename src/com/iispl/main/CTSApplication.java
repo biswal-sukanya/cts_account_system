@@ -192,9 +192,9 @@ public class CTSApplication {
 			System.out.println("\nRemove...\n");
 			
 			System.out.println("Enter Cheque Number ");
-			String accountNumber = sc.next();
+			String chequeNumber = sc.next();
 
-			chequeService.removeProcessedCheque(accountNumber);
+			chequeService.removeProcessedCheque(chequeNumber);
 
 			System.out.println("Cheque Removed Successfully.");
 
