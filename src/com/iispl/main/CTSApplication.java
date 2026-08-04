@@ -22,7 +22,7 @@ public class CTSApplication {
 		public static void main(String[] args) {
 
 			int choice = 0;
-			sc.nextLine();
+			
 
 			do {
 
@@ -113,7 +113,7 @@ public class CTSApplication {
 
 			System.out.println("\nEnter Account Number \n");
 
-			String accountNumber = sc.nextLine();
+			String accountNumber = sc.next();
 			Account account = accountService.searchAccount(accountNumber);
 
 			if (account != null) {
@@ -133,7 +133,7 @@ public class CTSApplication {
 			System.out.println("\nUpdating Balance of ACC103...\n");
 
 			System.out.println("Enter Account Number ");
-			String accountNumber = sc.nextLine();
+			String accountNumber = sc.next();
 			
 			System.out.println("Enter Account Balance");
 			BigDecimal balance = sc.nextBigDecimal();
@@ -149,7 +149,7 @@ public class CTSApplication {
 		private static void deleteAccount() {
 
 			System.out.println("Enter Account Number ");
-			String accountNumber = sc.nextLine();
+			String accountNumber = sc.next();
 			
 
 			accountService.deleteAccount(accountNumber);
@@ -197,9 +197,12 @@ public class CTSApplication {
 	
 		private static void removeProcessedCheque() {
 
-			System.out.println("\nRemoving CHQ005...\n");
+			System.out.println("\nRemove...\n");
+			
+			System.out.println("Enter Account Number ");
+			String accountNumber = sc.next();
 
-			chequeService.removeProcessedCheque("CHQ005");
+			chequeService.removeProcessedCheque(accountNumber);
 
 			System.out.println("Cheque Removed Successfully.");
 
