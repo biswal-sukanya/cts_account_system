@@ -13,15 +13,16 @@ import com.iispl.service.ChequeServiceImpl;
 public class CTSApplication {
 
 	static ChequeService chequeService = new ChequeServiceImpl();
-	static AccountService accountService = new AccountServiceImpl();		
+	static AccountService accountService = new AccountServiceImpl();	
+	
+	static Scanner sc = new Scanner(System.in);
 
 	private static boolean chequeLoaded = false;
 	
 		public static void main(String[] args) {
 
-			Scanner scanner = new Scanner(System.in);
-
 			int choice = 0;
+			sc.nextLine();
 
 			do {
 
@@ -48,7 +49,7 @@ public class CTSApplication {
 
 				System.out.print("\nEnter Choice : ");
 
-				choice = scanner.nextInt();
+				choice = sc.nextInt();
 
 				switch (choice) {
 
@@ -105,14 +106,15 @@ public class CTSApplication {
 
 			} while (choice != 10);
 
-			scanner.close();
+			sc.close();
 	}
 		
 		private static void searchAccount() {
 
-			System.out.println("\nSearching Account ACC103...\n");
+			System.out.println("\nEnter Account Number \n");
 
-			Account account = accountService.searchAccount("ACC103");
+			String accountNumber = sc.nextLine();
+			Account account = accountService.searchAccount(accountNumber);
 
 			if (account != null) {
 				System.out.printf("\n%-10s %-12s %-10s%n%n","Account Number","Account Balance","Account Status");
@@ -130,9 +132,13 @@ public class CTSApplication {
 
 			System.out.println("\nUpdating Balance of ACC103...\n");
 
-			accountService.updateBalance(
-					"ACC107",
-					new BigDecimal("18000"));
+			System.out.println("Enter Account Number ");
+			String accountNumber = sc.nextLine();
+			
+			System.out.println("Enter Account Balance");
+			BigDecimal balance = sc.nextBigDecimal();
+			
+			accountService.updateBalance(accountNumber,balance);
 
 			System.out.println("Updated Successfully.\n");
 
@@ -142,9 +148,11 @@ public class CTSApplication {
 		
 		private static void deleteAccount() {
 
-			System.out.println("\nDeleting Account ACC110...\n");
+			System.out.println("Enter Account Number ");
+			String accountNumber = sc.nextLine();
+			
 
-			accountService.deleteAccount("ACC110");
+			accountService.deleteAccount(accountNumber);
 
 			System.out.println("Deleted Successfully.\n");
 
