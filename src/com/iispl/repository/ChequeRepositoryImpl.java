@@ -115,7 +115,7 @@ public class ChequeRepositoryImpl implements ChequeRepository {
 
 		@Override
 		public HashMap<String, Integer> getBranchReport() {
-			// TODO Auto-generated method stub
+			
 			return branchReport;
 		}
 }

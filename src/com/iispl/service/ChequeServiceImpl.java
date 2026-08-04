@@ -54,7 +54,7 @@ public class ChequeServiceImpl implements ChequeService {
 
 	            chequeRepository.addProcessedCheque(cheque);
 
-	            System.out.println("Cheque Processed Successfully.");
+	            System.out.println("Cheque Processed Successfully. "+cheque.getChequeNumber());
 
 	        }
 	        catch(Exception e) {
@@ -82,25 +82,25 @@ public class ChequeServiceImpl implements ChequeService {
 	    }
 		@Override
 		public HashSet<String> getProcessedChequeNumbers() {
-			// TODO Auto-generated method stub
+			
 			return chequeRepository.getProcessedChequeNumbers();
 		}
 
 		@Override
 		public TreeSet<Cheque> getProcessedCheques() {
-			// TODO Auto-generated method stub
+			
 			return chequeRepository.getProcessedCheques();
 		}
 
 		@Override
 		public HashMap<String, Integer> getBranchReport() {
-			// TODO Auto-generated method stub
+			
 			return chequeRepository.getBranchReport();
 		}
 
 		@Override
 		public boolean isDuplicateCheque(String chequeNumber) {
-			// TODO Auto-generated method stub
+			
 			return chequeRepository.isDuplicateCheque(chequeNumber);
 		}
 }
